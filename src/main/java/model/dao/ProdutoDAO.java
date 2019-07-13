@@ -8,7 +8,6 @@ package model.dao;
 import Connection.HibernateConnection;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.vo.Produto;
 
@@ -16,7 +15,7 @@ import model.vo.Produto;
  *
  * @author NataN
  */
-public class ProdutoDAO implements IProdutoDAO{
+public class ProdutoDAO{
     
     EntityManager manager;
 
@@ -24,7 +23,6 @@ public class ProdutoDAO implements IProdutoDAO{
         this.manager = HibernateConnection.getEntityManager();
     }
 
-    @Override
     public boolean salvar(Produto produto) {
         this.manager.getTransaction().begin();
         this.manager.persist(produto);
@@ -32,7 +30,6 @@ public class ProdutoDAO implements IProdutoDAO{
         return true;
     }
 
-    @Override
     public boolean atualizar(Produto produto) {
         manager.getTransaction().begin();
         manager.merge(produto);
@@ -40,7 +37,6 @@ public class ProdutoDAO implements IProdutoDAO{
         return true;
     }
 
-    @Override
     public boolean excluir(Produto produto) {
         manager.getTransaction().begin();
         manager.remove(produto);
@@ -48,44 +44,36 @@ public class ProdutoDAO implements IProdutoDAO{
         return true;
     }
 
-    @Override
     public List<Produto> listarTodos() {
         List<Produto> produtos;
         
-        //Query query = manager.createQuery("SELECT c FROM Produto c");
-        TypedQuery<Produto> query = manager.createQuery("SELECT c FROM Produto c", Produto.class);
+        //Query query = manager.createQuery("SELECT p FROM tb_produto p");
+        TypedQuery<Produto> query = manager.createQuery("SELECT p FROM Produto p", Produto.class);
         
         produtos = query.getResultList();
         
         return produtos;
     }
 
-    @Override
     public Produto listarUm(Long id) {
         Produto produto;
         
-        Query query = manager.createQuery("SELECT c FROM Produto c WHERE c.codigo = " + id);
+        TypedQuery<Produto> query = manager.createQuery("SELECT p FROM Produto p WHERE p.id", Produto.class);
         produto = (Produto)query.getSingleResult();
         
         //produto = manager.find(Produto.class, id);
         return produto;
     }
     
-    public List<Produto> listagemDinamica(String valor){
-        manager = HibernateConnection.getEntityManager();
-        String sql = "SELECT prod_id, data_cadastro, descricao, quantidade_minima, valor FROM tb_produto  WHERE descricao LIKE '%" + valor + "%'";
-        Query query = manager.createQuery(sql);
-        List<Produto> produtos =  query.getResultList();
-        manager.close();
-        return produtos;
+    public List<Produto> listagemDinamica(String valor){        
+        List<Produto> produtos;
         
-        /*manager = HibernateConnection.getEntityManager();
-        String sql = "from tb_produtos where descricao like :value";
-        Query query = manager.createQuery(sql);
-        query.setParameter("value" , "%" + valor + "%");
-        List<Produto> produtos =  query.getResultList();
-        manager.close();
-        return produtos;*/
+        String sql = "SELECT p FROM Produto p WHERE p.descricao LIKE '%" + valor + "%'";
+        TypedQuery<Produto> query = manager.createQuery(sql, Produto.class);
+        
+        produtos = query.getResultList();
+        
+        return produtos;
     }
     
 }

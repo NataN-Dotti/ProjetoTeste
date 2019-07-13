@@ -23,7 +23,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "tb_produto")
 public class Produto {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "prod_id")
     private long id;
     
