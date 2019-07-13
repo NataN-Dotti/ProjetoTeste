@@ -27,20 +27,20 @@ public class Produto {
     @Column(name = "prod_id")
     private long id;
     
-    @Column(nullable = false , length = 45)
+    @Column(name = "descricao", nullable = false , length = 45)
     private String descricao;
     
     @Column(name = "quantidade_minima", nullable = false)
-    private long quantidadeMinima;
+    private double quantidadeMinima;
     
     @Column(name = "data_cadastro", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCadastro;
     
-    @Column(nullable = false, scale = 2, precision = 10)
-    private Double valor;
+    @Column(name = "valor", nullable = false, scale = 2, precision = 10)
+    private double valor;
     
-    public Produto(String descricao, long quantidadeMinima, Date dataCadastro, Double valor) {
+    public Produto(String descricao, double quantidadeMinima, Date dataCadastro, double valor) {
         this.descricao = descricao;
         this.quantidadeMinima = quantidadeMinima;
         this.dataCadastro = dataCadastro;
@@ -66,11 +66,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public long getQuantidadeMinima() {
+    public double getQuantidadeMinima() {
         return quantidadeMinima;
     }
 
-    public void setQuantidadeMinima(long quantidadeMinima) {
+    public void setQuantidadeMinima(double quantidadeMinima) {
         this.quantidadeMinima = quantidadeMinima;
     }
 
@@ -82,11 +82,11 @@ public class Produto {
         this.dataCadastro = dataCadastro;
     }
 
-    public Double getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
     

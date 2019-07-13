@@ -1,8 +1,6 @@
 
 import controller.EstoqueController;
 import controller.ProdutoController;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import model.vo.Estoque;
 import model.vo.Produto;
@@ -23,25 +21,29 @@ public class Main {
         
         iniciarBanco();
         
-        FormProduto p = new FormProduto();
+        FormProduto f = new FormProduto();
         
-        p.setVisible(true);
+        f.setVisible(true);
 
     }
     
     public static void iniciarBanco(){
         
-        Produto p = new Produto("Banana", 10, new Date(), 1.25);
+        Produto p1 = new Produto("Banana", 10, new Date(), 1.25);
+        Produto p2 = new Produto("Maça", 15, new Date(), 20);
         
-        Estoque e = new Estoque(new Date(), 5, "entrada", p);
+        Estoque e1 = new Estoque(new Date(), 5, "entrada", p1);
+        Estoque e2 = new Estoque(new Date(), 5, "entrada", p2);
         
         ProdutoController pcontroll = new ProdutoController();
         
         EstoqueController econtroll = new EstoqueController();
         
-        pcontroll.salvar(p);
+        pcontroll.salvar(p1);
+        econtroll.salvar(e1);
         
-        econtroll.salvar(e);
+        pcontroll.salvar(p2);
+        econtroll.salvar(e2);
         
     }
 }

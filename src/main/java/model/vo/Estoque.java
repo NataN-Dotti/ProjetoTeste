@@ -32,8 +32,8 @@ public class Estoque {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataMovimento;
     
-    @Column(nullable =  false)
-    private long quantidade;
+    @Column(name = "quantidade", nullable =  false)
+    private double quantidade;
     
     @Column(name = "tipo_movimentacao" , nullable =  false , length = 45)
     private String tipoMovimentacao;
@@ -42,7 +42,7 @@ public class Estoque {
     @JoinColumn(name = "prod_id")
     private Produto produto;
 
-    public Estoque(Date dataMovimento, long quantidade, String tipoMovimentacao, Produto produto) {
+    public Estoque(Date dataMovimento, double quantidade, String tipoMovimentacao, Produto produto) {
         this.dataMovimento = dataMovimento;
         this.quantidade = quantidade;
         this.tipoMovimentacao = tipoMovimentacao;
@@ -76,11 +76,11 @@ public class Estoque {
         this.dataMovimento = dataMovimento;
     }
 
-    public long getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(long quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
 

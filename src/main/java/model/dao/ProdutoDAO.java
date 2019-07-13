@@ -71,4 +71,21 @@ public class ProdutoDAO implements IProdutoDAO{
         return produto;
     }
     
+    public List<Produto> listagemDinamica(String valor){
+        manager = HibernateConnection.getEntityManager();
+        String sql = "SELECT prod_id, data_cadastro, descricao, quantidade_minima, valor FROM tb_produto  WHERE descricao LIKE '%" + valor + "%'";
+        Query query = manager.createQuery(sql);
+        List<Produto> produtos =  query.getResultList();
+        manager.close();
+        return produtos;
+        
+        /*manager = HibernateConnection.getEntityManager();
+        String sql = "from tb_produtos where descricao like :value";
+        Query query = manager.createQuery(sql);
+        query.setParameter("value" , "%" + valor + "%");
+        List<Produto> produtos =  query.getResultList();
+        manager.close();
+        return produtos;*/
+    }
+    
 }
