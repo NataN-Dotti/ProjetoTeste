@@ -21,11 +21,9 @@
   <p>Uma empresa necessita de uma ferramenta para controlar manualmente o estoque de
   produtos diversos. Sabendo disto, desenvolver duas aplicações.</p>
   <ol>
-    <li>Aplicação Desktop
-      <ol>
+    <li>Aplicação Desktop<br>
         1.1. Tela para cadastrar e editar produtos<br>
         1.2. Tela para controlar a entrada e saída de estoque
-      </ol>
     </li>
   </ol>
   
