@@ -23,8 +23,8 @@
   <ol>
     <li>Aplicação Desktop
       <ol>
-        <li type="1">1. Tela para cadastrar e editar produtos</li>
-        <li type="1">2. Tela para controlar a entrada e saída de estoque</li>
+        1.1. Tela para cadastrar e editar produtos<br>
+        1.2. Tela para controlar a entrada e saída de estoque
       </ol>
     </li>
   </ol>
