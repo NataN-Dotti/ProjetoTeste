@@ -12,7 +12,7 @@
     <li>Github</li>
     <li>Swing (aplicação Desktop)</li>
     <li>JSF (aplicação Web)</li>
-    <li>PA (Hibernate ou Eclipselink)</li>
+    <li>JPA (Hibernate ou Eclipselink)</li>
   </ul>
   
   <hr></hr>
@@ -21,11 +21,12 @@
   <p>Uma empresa necessita de uma ferramenta para controlar manualmente o estoque de
   produtos diversos. Sabendo disto, desenvolver duas aplicações.</p>
   <ol>
-    <li>Aplicação Desktop</li>
+    <li>Aplicação Desktop
       <ol>
-        <li>Tela para cadastrar e editar produtos</li>
-        <li>Tela para controlar a entrada e saída de estoque</li>
+        <li type="1">1. Tela para cadastrar e editar produtos</li>
+        <li type="1">2. Tela para controlar a entrada e saída de estoque</li>
       </ol>
+    </li>
   </ol>
   
   <hr></hr>
@@ -35,4 +36,4 @@
   <p>O sistema desenvolvido até o momento conta com um padrão de arquitetura MVC (com uma camada extra para a conexão com o banco),
   bem como o padrão de projeto Singleton para obter a comunicação com o banco sem ter que instânciar a classe de conexão.
   O Front-End de Produto conta com as opções de Cadastrar, Atualizar e uma Tabela que lista e faz uma pesquisa dinâmica conforme o
-  usuário vá digitando o nome do produto./p>
+  usuário vá digitando o nome do produto.</p>
