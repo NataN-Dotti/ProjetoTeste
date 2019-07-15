@@ -24,6 +24,7 @@ public class FormProduto extends javax.swing.JFrame {
     private Produto produto;
     
     public FormProduto() {
+        pcontroll = new ProdutoController();
         iniciar();
         initComponents();
         atualizarTabela();
@@ -301,6 +302,7 @@ public class FormProduto extends javax.swing.JFrame {
         try{
             preencherDadosProdutos();
             this.pcontroll.atualizar(this.produto);
+            iniciar();
             atualizarTabela();
             limparCampos();
         }catch(NullPointerException erro){
@@ -317,6 +319,7 @@ public class FormProduto extends javax.swing.JFrame {
         try{
             this.pcontroll.setProduto(this.produto);
             this.pcontroll.salvar(this.produto);
+            iniciar();
             atualizarTabela();
             limparCampos();
         }catch(Exception erro){
@@ -345,8 +348,7 @@ public class FormProduto extends javax.swing.JFrame {
         btCadastrarProduto.setEnabled(false);
     }
     
-    private void iniciar(){        
-        this.pcontroll = new ProdutoController();
+    private void iniciar(){
         this.produto = new Produto();
     }
     
